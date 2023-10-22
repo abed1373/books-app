@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const HomeScreen = () => {
   return (
-    <div>
+    <div className='main-cont'>
       <Header />
       <div className="home-container">
         <div className="home-main-row">
@@ -24,7 +24,7 @@ const HomeScreen = () => {
             <li>
               <img src="/assets/images/home-icon-1.png" alt="" />
               <h3>Novel</h3>
-              <p>new version</p>
+              <p>old version</p>
             </li>
             <li>
               <img src="/assets/images/home-icon.png" alt="" />
@@ -36,19 +36,39 @@ const HomeScreen = () => {
         </div>
         <div className="home-image-books">
           <div>
-           <Link> <img src="/assets/images/book-1.png" alt="" /></Link>
+            <Link>
+              {' '}
+              <img src="/assets/images/book-1.png" alt="" />
+            </Link>
+            <b>$18</b>
+            <p>Author:Ferdosi</p>
             <button>Add To Cart</button>
           </div>
           <div>
-          <Link> <img src="/assets/images/book-2.png" alt="" /></Link>
+            <Link>
+              {' '}
+              <img src="/assets/images/book-2.png" alt="" />
+            </Link>
+            <b>$15</b>
+            <p>Author:Ferdosi</p>
             <button>Add To Cart</button>
           </div>
           <div>
-          <Link> <img src="/assets/images/book-3.png" alt="" /></Link>
+            <Link>
+              {' '}
+              <img src="/assets/images/book-3.png" alt="" />
+            </Link>
+            <b>$14</b>
+            <p>Author:Ferdosi</p>
             <button>Add To Cart</button>
           </div>
           <div>
-          <Link> <img src="/assets/images/book-4.png" alt="" /></Link>
+            <Link>
+              {' '}
+              <img src="/assets/images/book-4.png" alt="" />
+            </Link>
+            <b>$16</b>
+            <p>Author:Ferdosi</p>
             <button>Add To Cart</button>
           </div>
         </div>

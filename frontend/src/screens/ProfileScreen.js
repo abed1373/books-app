@@ -1,8 +1,13 @@
+import { useSelector } from "react-redux"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 
 
 const ProfileScreen = () => {
+
+const {userInfo}=useSelector((state)=>state.userLogin);
+
+
   return (
     
     <div>
@@ -13,9 +18,9 @@ const ProfileScreen = () => {
           <img src="/assets/images/user-1.png" alt="" />
           <div className="user-details">
             <ul>
-              <li><b> name:</b>jerard</li>
-              <li><b> lastname:</b>pike</li>
-              <li><b> email:</b>@gmail.com</li>
+              <li><b> username:</b>{userInfo?.username}</li>
+             
+              <li><b> email:</b>{userInfo?.email}</li>
             </ul>
             <span>2024/11/22</span>
           </div>

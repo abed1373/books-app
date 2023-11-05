@@ -1,6 +1,17 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '../redux/actions/userActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo, loading, error } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   return (
     <div>
       <nav>
@@ -17,19 +28,48 @@ const Header = () => {
         </div>
         <div className="nav-center">
           <div>
-            <Link className='link' to="/profile">User Profile</Link>
+            <Link className="link" to="/profile">
+              User Profile
+            </Link>
           </div>
           <div>
-            <Link className='link' to='/store'>Book Store</Link>
+            <Link className="link" to="/store">
+              Book Store
+            </Link>
           </div>
         </div>
         <div className="nav-right">
-            <div>
-                <Link className='link' to='signup'>Sign Up</Link>
-            </div>
-            <div>
-                <Link className='link' to='signin'>Sign In</Link>
-            </div>
+          <div>
+            <Link className="link" to="/signup">
+            Sign Up
+            </Link>
+          </div>
+          <div>
+            {userInfo ? (
+              <div className="userinfo-dropdown">
+                <Link className="link" to="#">
+                  {userInfo.username}{' '}
+                  <i className="fa-sharp fa-solid fa-caret-down"></i>{' '}
+                </Link>
+                <ul className="userinfo-dropdown-content">
+                  <li>
+                    <Link className="link" to="/profile">
+                      User Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={logoutHandler} className="link" to="#signout">
+                      signout
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <Link className="link" to="/signin">
+                Sign In
+              </Link>
+            )}
+          </div>
         </div>
       </nav>
     </div>

@@ -84,7 +84,12 @@ nav {
   align-items: center;
   justify-content: center;
 
+ 
+  background-attachment: scroll;
+  background-position: 0% 0%;
+ 
   bottom: 0;
+  left: 0;
   color: #fff;
   background: #333;
   width: 100%;
@@ -213,6 +218,7 @@ nav {
   flex-basis: 24%;
   padding: 10px 15px;
   background: #dbdbdb;
+  
 }
 .left-store p {
   margin-top: -10px;
@@ -270,13 +276,14 @@ nav {
 }
 .left-store button {
   padding: 10px 35px;
-  margin-top: -15px;
+  margin-top: -5px;
   font-size: 25px;
   margin-left: 70px;
   background: #d05252;
   border: 0;
   outline: 0;
   border-radius: 18px;
+  margin-bottom: 20px;
 }
 .left-store .title {
   left: -300px;
@@ -651,9 +658,9 @@ nav {
 }
 .p3 .p3-i1 b {
   background: #fff;
-  padding: 15px 75px;
+  padding: 15px 70px;
   margin-left: -15px;
-  border-top-right-radius: 90%;
+  border-top-right-radius: 95%;
 }
 .p3 .p3-i2 {
   padding: 10px 15px;
@@ -741,6 +748,31 @@ nav {
   color: #000;
 }
 
+.userinfo-dropdown{
+  display: inline-block;
+ position: relative;
+ 
+}
+.userinfo-dropdown-content{
+  position: absolute;
+  display: none;
+  right: -50px;
+  min-width: 120px;
+  padding: 10px;
+  z-index: 1;
+  background-color: #333;
+  margin: 0;
+  margin-top: 0;
+  border-radius: 5px;
+}
+.userinfo-dropdown-content  li{
+  list-style-type: none;
+}
+.userinfo-dropdown:hover .userinfo-dropdown-content{
+  display: block;
+}
+
+
 /* -------------------media query ----------------- */
 @media only screen and (max-width: 600px) {
   nav {
@@ -805,4 +837,42 @@ nav {
   .right-store .title {
     display: none;
   }
+}
+
+/* -------------------sign up -----form-----------------*/
+.sign-container {
+  padding: 33px 3%;
+  min-height: calc(80vh )
+}
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.form label {
+  margin: 10px 0;
+}
+.form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #a4a4a4;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.form :last-child {
+  flex-direction: row;
+  text-decoration: none;
+}
+.form button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 0;
+  outline: 0;
+  background: #d05252;
 }

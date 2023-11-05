@@ -14,7 +14,7 @@ const SignupScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const userRegister=useSelector(state=>state.userRegister);
-  const {userInfo,error,loading}=userRegister;
+  const {userInfo}=userRegister;
   console.log(userInfo)
   const dispatch=useDispatch()
 

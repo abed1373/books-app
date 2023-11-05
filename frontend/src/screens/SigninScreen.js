@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import  {  useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,7 @@ const SigninScreen = () => {
   const redirect=redirectInUrl?redirectInUrl:'/'
 
   const userLogin=useSelector(state=>state.userLogin);
-  const {userInfo,loading,error}=userLogin;
+  const {userInfo}=userLogin;
   
   const dispatch=useDispatch();
  

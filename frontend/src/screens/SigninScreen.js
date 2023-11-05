@@ -1,5 +1,5 @@
 import  {  useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/actions/userActions';
@@ -12,9 +12,7 @@ const SigninScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const {search}=useLocation();
-  const redirectInUrl=new URLSearchParams(search).get('redirect');
-  const redirect=redirectInUrl?redirectInUrl:'/'
+  
 
   const userLogin=useSelector(state=>state.userLogin);
   const {userInfo}=userLogin;
@@ -76,7 +74,7 @@ const SigninScreen = () => {
             <button type="submit">Sign In</button>
           </div>
           <div>
-          New Customer? <Link  to={`/register?redirect=${redirect}`}>Sign Up</Link>
+          New Customer? <Link  to='/signup'>Sign Up</Link>
           </div>
         </form>
       </div>

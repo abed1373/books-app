@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../redux/actions/userActions';
@@ -12,6 +12,8 @@ const SignupScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  
 
   const userRegister=useSelector(state=>state.userRegister);
   const {userInfo}=userRegister;
@@ -94,7 +96,7 @@ if(userInfo){
             <button type="submit">Sign Up</button>
           </div>
           <div>
-            Already have a account? <Link to="/signin">Sign In</Link>
+            Already have a account? <Link to='signin'>Sign In</Link>
           </div>
         </form>
       </div>

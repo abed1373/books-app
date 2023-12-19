@@ -1,10 +1,13 @@
-import express from 'express'
-import asyncHandler from 'express-async-handler'
-import { createSubcategory,getSubcategoryById } from '../controllers/subcategoryController.js'
+import express from 'express';
+import asyncHandler from 'express-async-handler';
+import {
+  createSubcategory,
+  getSubcategoryById,
+} from '../controllers/subcategoryController.js';
 
-const router=express.Router()
+const router = express.Router();
 
-router.post('/',asyncHandler(createSubcategory));
-router.get('/:subcategoryId',asyncHandler(getSubcategoryById))
+router.post('/', createSubcategory);
+router.get('/:subcategoryId', getSubcategoryById);
 
 export default router;

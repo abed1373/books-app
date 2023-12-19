@@ -4,6 +4,6 @@ import { createBasket,getBasketById } from '../controllers/basketController.js'
 
 const router=express.Router()
 
-router.post('/',asyncHandler(createBasket));
-router.get('/:basketId',asyncHandler(getBasketById))
+router.post('/',createBasket);
+router.get('/:basketId',getBasketById)
 export default router

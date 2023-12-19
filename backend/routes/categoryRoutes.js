@@ -4,7 +4,7 @@ import { getCategory,createCategory } from '../controllers/categoryController.js
 
 const router=express.Router()
 
-router.post('/',asyncHandler(createCategory));
-router.get('/:categoryId',asyncHandler(getCategory))
+router.post('/',createCategory);
+router.get('/:categoryId',getCategory)
 
 export default router

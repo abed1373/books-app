@@ -4,7 +4,7 @@ import { createAuthor, getAuthorById } from '../controllers/authorController.js'
 
 const router = express.Router();
 
-router.post('/', asyncHandler(createAuthor));
-router.get('/:authorId', asyncHandler(getAuthorById));
+router.post('/', createAuthor);
+router.get('/:authorId', getAuthorById);
 
 export default router;

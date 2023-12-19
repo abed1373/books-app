@@ -4,8 +4,12 @@ import Author from '../models/authorModel.js';
 //create author
 const createAuthor = asyncHandler(async (req, res) => {
   const { name } = req.body;
-  const author = new Author({ name });
+  const author = await Author.create( {name} );
+
+
   await author.save();
+  
+
   res.status(201).json(author);
 });
 
@@ -19,4 +23,4 @@ const getAuthorById = asyncHandler(async (req, res) => {
   res.json(author);
 });
 
-export {createAuthor,getAuthorById}
+export { createAuthor, getAuthorById };

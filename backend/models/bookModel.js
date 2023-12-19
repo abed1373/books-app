@@ -1,27 +1,26 @@
 import mongoose from 'mongoose';
 
-const bookSchema =new mongoose.Schema(
+const bookSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
+    title: String,
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Author',
-      required: true,
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
-      required: true,
     },
     subcategory: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Subcategory',
-      required: true,
     },
-    price: {
-      type: Number,
-      required: true,
+    image: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Image',
     },
+
+    price: Number,
   },
   {
     timestamps: true,

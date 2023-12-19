@@ -8,8 +8,8 @@ import asyncHandler from 'express-async-handler';
 
 const router = express.Router();
 
-router.get('/',asyncHandler(getBooks));
-router.post('/', asyncHandler(createBook));
-router.get('/:bookId', asyncHandler(getBook));
+router.get('/',getBooks);
+router.post('/', createBook);
+router.get('/:bookId', getBook);
 
 export default router;

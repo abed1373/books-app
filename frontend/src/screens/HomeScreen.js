@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const HomeScreen = ({ match }) => {
   const { bookId } = useParams();
   const [books, setBooks] = useState([]);
-  // const [images, setImages] = useState([]);
+ 
 
   useEffect(() => {
     // Fetch all books from the server
@@ -21,18 +21,10 @@ const HomeScreen = ({ match }) => {
         console.error('Error fetching books:', error);
       }
     };
-    // const fetchImages = async () => {
-    //   try {
-    //     const response = await axios.get('http://localhost:5001/api/images');
-    //     console.log('Images:', response.data);
-    //     setImages(response.data);
-    //   } catch (error) {
-    //     console.error('Error fetching images:', error);
-    //   }
-    // };
+   
 
     fetchBooks();
-    //fetchImages();
+   
   }, []);
 
   return (
@@ -70,7 +62,7 @@ const HomeScreen = ({ match }) => {
         <div className="home-image-books">
           <div>
             {books.map((book) => (
-              //const image = images.find((img) => img._id === book.imageId);
+              
 
               <div key={book._id}>
                 <Link>
@@ -96,33 +88,7 @@ const HomeScreen = ({ match }) => {
             ))}
           </div>
 
-          {/* <div>
-            <Link>
-              {' '}
-              <img src="/assets/images/book-2.png" alt="" />
-            </Link>
-            <b>$15</b>
-            <p>Author:Ferdosi</p>
-            <button>Add To Cart</button>
-          </div>
-          <div>
-            <Link>
-              {' '}
-              <img src="/assets/images/book-3.png" alt="" />
-            </Link>
-            <b>$14</b>
-            <p>Author:Ferdosi</p>
-            <button>Add To Cart</button>
-          </div>
-          <div>
-            <Link>
-              {' '}
-              <img src="/assets/images/book-4.png" alt="" />
-            </Link>
-            <b>$16</b>
-            <p>Author:Ferdosi</p>
-            <button>Add To Cart</button>
-          </div> */}
+         
         </div>
       </div>
       <Footer />

@@ -12,7 +12,8 @@ import Image from '../models/imageModel.js';
 const createBook = asyncHandler(async (req, res) => {
   const { title, price, categoryId, subcategoryId, authorId, imageId } =
     req.body;
-
+  
+  
   const category = await Category.findById(categoryId);
   const subcategory = await Subcategory.findById(subcategoryId);
   const author = await Author.findById(authorId);
@@ -24,6 +25,7 @@ const createBook = asyncHandler(async (req, res) => {
   }
 
   const book = new Book({
+  
     title,
     price,
     category: categoryId,
@@ -57,7 +59,8 @@ const getBooks = asyncHandler(async (req, res) => {
 //@access public
 
 const getBook = asyncHandler(async (req, res) => {
-  const book = await Book.findById(req.params.bookId)
+  const bookId = req.params.bookId;
+  const book = await Book.findById(bookId)
     .populate('subcategory', 'name-_id')
     .populate('author', 'name-_id')
     .populate('category', 'name-_id')
@@ -69,7 +72,7 @@ const getBook = asyncHandler(async (req, res) => {
     return;
   }
   res.json({
-    _id: book._id,
+    bookId:book._id,
     title: book.title,
     author: book.author ? book.author.name : null,
     category: book.category ? book.category.name : null,

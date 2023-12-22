@@ -774,6 +774,40 @@ nav {
   display: block;
 }
 
+/* ------------------------product-details-------------------- */
+.product-details div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.product-details div p{
+  margin-left: 15px;
+}
+.product-details div b{
+  margin-left: 15px;
+}
+.product-details div button{
+  display: block;
+    padding: 7px 18px;
+    margin-top: 10px;
+    margin-left: 25px;
+    background: #d05252;
+    border: 0;
+    outline: none;
+    color: #fff;
+
+}
+.product-details div label{
+  font-size: 20px;
+  margin-left: 15px;
+}
+.product-details div input{
+  width: 50px;
+  outline: none;
+ 
+}
+
 
 /* -------------------media query ----------------- */
 @media only screen and (max-width: 600px) {

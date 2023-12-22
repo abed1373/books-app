@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
-const HomeScreen = ({ match }) => {
-  const { bookId } = useParams();
-  const [books, setBooks] = useState([]);
- 
+
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { setBooks } from  '../redux/actions/bookAction';
+
+const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const books = useSelector((state) => state.books.books);
+  
+
+  
 
   useEffect(() => {
     // Fetch all books from the server
-    const fetchBooks = async () => {
-      try {
-        const response = await axios.get('http://localhost:5001/api/books');
-        console.log('Books:', response.data);
-        setBooks(response.data);
-      } catch (error) {
-        console.error('Error fetching books:', error);
-      }
-    };
-   
+    axios.get('http://localhost:5001/api/books')
+      .then((response) => {
+        // Dispatch an action to set the books in the Redux store
+        dispatch(setBooks(response.data));
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, [dispatch]);
 
-    fetchBooks();
-   
-  }, []);
+ 
 
   return (
     <div className="main-cont">
@@ -62,12 +64,13 @@ const HomeScreen = ({ match }) => {
         <div className="home-image-books">
           <div>
             {books.map((book) => (
-              
-
               <div key={book._id}>
-                <Link>
-                  {' '}
-                  {book.image && (
+                {' '}
+                {book.image && (
+                  <Link
+                  to={`/${book._id}`}
+                   
+                  >
                     <img
                       src={`http://localhost:5001/${book.image.path.replace(
                         /\\/g,
@@ -76,19 +79,25 @@ const HomeScreen = ({ match }) => {
                       alt={book.image.filename}
                       style={{ maxWidth: '300px', margin: '10px' }}
                     />
-                  )}
-                </Link>
-
-                <p><strong>Author:</strong>{book?.author.name} </p>
-                <p><strong>Category:</strong>{book?.category.name}</p>
+                  </Link>
+                )}
+                <p>
+                  <strong>Author:</strong>
+                  {book?.author.name}{' '}
+                </p>
+                <p>
+                  <strong>Category:</strong>
+                  {book?.category.name}
+                </p>
+                <p>
+                  <strong>Subcategory:</strong>
+                  {book?.subcategory.name}
+                </p>
                 <b>${book?.price}</b>
-
-                <button>Add To Cart</button>
+                
               </div>
             ))}
           </div>
-
-         
         </div>
       </div>
       <Footer />

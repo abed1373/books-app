@@ -6,6 +6,9 @@ import BookStore from './screens/BookStore';
 import SigninScreen from './screens/SigninScreen';
 import SignupScreen from './screens/SignupScreen';
 import PrivateRoute from './components/privateRoute';
+import ProductDetail from './screens/ProductDetail';
+import CartScreen from './screens/cartScreen';
+
 
 const App = () => {
   return (
@@ -14,6 +17,9 @@ const App = () => {
         <Route index path="/" element={<HomeScreen />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<ProfileScreen />} />
+          <Route path="/:bookId" element={<ProductDetail />} />
+          <Route path="/cart/:bookId?" element={<CartScreen/>} />
+
           <Route path="/store" element={<BookStore />} />
         </Route>
 

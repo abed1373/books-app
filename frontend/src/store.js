@@ -5,6 +5,7 @@ import {
   userRegisterReducer,
 } from './redux/reducers/userReducers';
 import bookReducer from './redux/reducers/bookReducers';
+import cartReducer from './redux/reducers/cartReducers';
 
 const initialState = {
   userLogin: {
@@ -12,12 +13,15 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null,
   },
+  
+  
 };
 
 const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userLogin: userLoginReducer,
- books:bookReducer
+  books: bookReducer,
+  cart: cartReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

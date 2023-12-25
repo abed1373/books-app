@@ -1,50 +1,55 @@
-import {
-  ADD_TO_CART,
-  REMOVE_FROM_CART,
-  UPDATE_QUANTITY,
-} from '../constants/cartConstants';
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../constants/cartConstants';
+const loadCartItemsFromLocalStorage = () => {
+  try {
+    const serializedCartItems = localStorage.getItem('cartItems');
+    return serializedCartItems ? JSON.parse(serializedCartItems) : [];
+  } catch (error) {
+    console.error('Error loading cart items from localStorage', error);
+    return [];
+  }
+};
 
 const initialState = {
-  cartItems: [],
+  cartItems: loadCartItemsFromLocalStorage(),
 };
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const existingItem = state.cartItems.find(
-        (item) => item.id === action.payload.id
-      );
-      if (existingItem) {
+      const { book, quantity } = action.payload;
+      const itemExists = state.cartItems.find((item) => item._id === book._id);
+
+      if (itemExists) {
+        // If the item is already in the cart, update the quantity
+        const updatedCartItems = state.cartItems.map((item) =>
+          item._id === book._id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         return {
           ...state,
-          cartItems: state.cartItems.map((item) =>
-            item.id === action.payload.id
-              ? { ...state, quantity: item.quantity + 1 }
-              : item
-          ),
+          cartItems: updatedCartItems,
         };
       } else {
+        // If the item is not in the cart, add it
+        const updatedCartItems = [...state.cartItems, { ...book, quantity }];
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
         return {
           ...state,
-          cartItems: [...state.cartItems, { ...action.payload, quantity: 1 }],
+          cartItems: updatedCartItems,
         };
       }
+      case REMOVE_FROM_CART:
+        const bookIdToRemove = action.payload;
+        const filteredCartItems=state.cartItems.filter((item)=>item._id !== bookIdToRemove);
+        localStorage.setItem('cartItems', JSON.stringify(filteredCartItems));
+        return {
+          ...state,
+          cartItems:filteredCartItems,
+        }
 
-    case REMOVE_FROM_CART:
-      return {
-        ...state,
-        cartItems: state.cartItems.filter((item) => item.id !== action.payload),
-      };
-
-    case UPDATE_QUANTITY:
-      return {
-        ...state,
-        cartItems: state.cartItems.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: action.payload.quantity }
-            : item
-        ),
-      };
+       
     default:
       return state;
   }

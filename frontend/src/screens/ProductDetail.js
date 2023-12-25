@@ -7,9 +7,10 @@ import { addToCart } from '../redux/actions/cartAction';
 
 const ProductDetail = () => {
     const {bookId}=useParams()
-  console.log(bookId)
+ 
   const dispatch = useDispatch();
   const selectedBook = useSelector((state) => state.books.selectedBook);
+  console.log(selectedBook)
   
  const navigate=useNavigate()
  
@@ -24,6 +25,10 @@ const ProductDetail = () => {
 
   const handleAddToCart = () => {
    navigate(`/cart/${bookId}?quantity=${quantity}`)
+   
+ 
+   dispatch(addToCart(selectedBook,quantity));
+   
   };
 
   if (!selectedBook) {

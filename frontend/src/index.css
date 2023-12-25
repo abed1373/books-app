@@ -808,6 +808,80 @@ nav {
  
 }
 
+/* ---------------------cart screen--------------- */
+.cart-screen{
+ 
+ display: flex;
+}
+.cart-screen a{
+  text-decoration: none;
+  font-size: 25px;
+  padding: 35px 20px 0 ;
+  
+}
+.cart-screen .left-cart{
+ display: flex;
+  width: 75%;
+  padding: 35px;
+  
+}
+.left-cart ul{
+  list-style-type: none;
+  
+}
+.left-cart ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.left-cart ul li p {
+  margin-left: 12px;
+  
+}
+.left-cart ul li h3{
+  margin-left: 15px;
+
+}
+.delete-button{
+  padding: 5px 12px;
+  margin-left: 15px;
+  background-color: #d05252;
+  color: #ffffff;
+  outline: none;
+  border: none;
+  
+}
+.right-cart{
+  border: 1px solid gray;
+  background-color: rgb(251, 249, 246);
+  width: 24%;
+  padding: 25px;
+  margin: 20px;
+  margin-top: 70px;
+  border-radius: 5px;
+ height: fit-content;
+}
+.right-cart li{
+  list-style-type: none;
+}
+.right-cart li button{
+  margin: 35px auto;
+  display: block;
+  padding: 10px 25px;
+  border-radius: 5px;
+  outline: 0;
+  border: none;
+  background-color: #d05252;
+  color: #ffffff;
+}
+.badge{
+   background-color: #f02020; 
+   color: #fafafa;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 14px;
+  margin-left: 2px; 
+}
 
 /* -------------------media query ----------------- */
 @media only screen and (max-width: 600px) {

@@ -4,6 +4,9 @@ import { logout } from '../redux/actions/userActions';
 
 const Header = () => {
   const dispatch = useDispatch();
+  
+  const cart = useSelector((state) => state.cart)
+  const { cartItems } = cart
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -35,6 +38,13 @@ const Header = () => {
           <div>
             <Link className="link" to="/store">
               Book Store
+            </Link>
+          </div>
+          <div>
+            <Link style={{textDecoration:'none',color:'white'}} to='/cart'>Cart
+            {cartItems.length > 0 && (
+              <span className="badge">{cartItems.length}</span>
+            ) }
             </Link>
           </div>
         </div>
